@@ -17,39 +17,37 @@ aside(id="left-content" data-toggle="open" data-default="open" data-size="")
           button(type="button" class="btn btn-default-bright btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 
             |John Doe
             i(class="material-icons") arrow_drop_down
-    
           ul(class="dropdown-menu")
             li
               a(href="#")
                 i(class="material-icons") 
                   | person
-                span(data-i18n="userinfo.profile") Your Profile
+                span(data-i18n="userinfo.profile") Perfil
             li
               a(href="#")
                 i(class="material-icons")
                   | settings
-                span(data-i18n="userinfo.settings") Settings
+                span(data-i18n="userinfo.settings") Configuración
             li(class="divider-horizontal")
             li
               a(href="#")
                 i(class="material-icons")
                   | lock
-                span(data-i18n="userinfo.lock") Lock
+                span(data-i18n="userinfo.lock") Bloquear
             li(class="divider-horizontal")
             li
               a(href="#")
                 i(class="material-icons") 
                   | exit_to_app
-                span(data-i18n="userinfo.logout") Log Out
+                span(data-i18n="userinfo.logout") Cerrar sesión
     
     nav(id="sidebar")
       ul
         li
-          a(href="pages/dashboard.html")
+          a(href="#")
             span(class="menu-item-ico")
               i(class="material-icons") dashboard
             span(class="menu-item-name" data-i18n="nav.dashboard") Dashboard
-            
         li
           a(href="#")
             span(class="menu-item-ico")
@@ -58,9 +56,15 @@ aside(id="left-content" data-toggle="open" data-default="open" data-size="")
           ul
             li
               a(href="#")
-                span(data-i18n="nav.components.accordions") Clientes
+                span(data-i18n="nav.components.accordions") Usuarios
             li
               a(href="#")
-                span(data-i18n="nav.components.alerts") Clasificaciones de equipo
+                span(data-i18n="nav.components.alerts") Perfiles
+            li
+              a(href="#")
+                span(data-i18n="nav.components.alerts") Empresas
+            li
+              a(href="#")
+                span(data-i18n="nav.components.alerts") Contactos
 
 include top-bar.jade
