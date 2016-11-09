@@ -7731,7 +7731,7 @@ body .header-container .header-wrapper #header-toolbar #sidebar-toggle:after {
   max-height: 128px;
   padding: 16px;
   border-bottom: none;
-  background: #009688 url("../../images/bgs/userbox-bg.png") left 40%;
+  background: #009688 url("/images/bgs/userbox-bg.png") left 40%;
   color: rgba(255, 255, 255, 0.8);
   position: relative;
   -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -7741,7 +7741,7 @@ body .header-container .header-wrapper #header-toolbar #sidebar-toggle:after {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 #page-wrapper #left-content #userbox.userbox-colored {
-  background-image: url("../../images/bgs/userbox-bg2.png") !important;
+  background-image: url("/images/bgs/userbox-bg2.png") !important;
 }
 #page-wrapper #left-content #userbox.userbox-colored .userbox-bg-overlay {
   opacity: 1;

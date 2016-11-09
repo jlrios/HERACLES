@@ -5,11 +5,12 @@ aside(id="left-content" data-toggle="open" data-default="open" data-size="")
         div(class="logo padding-left-2")
           span(class="logo-image") H
           span(class="logo-text") Heracles
+  
   div(id="sidebar-wrapper")
     div(id="userbox")
       div(id="useravatar")
         div(class="avatar-thumbnail")
-          img(src="../../public/images/avatar/avatar_square_blue.png" class="img-circle")
+          img(src="/images/avatar/avatar_square_blue.png" class="img-circle")
 
       div(id="userinfo")
         div(class="btn-group")
@@ -40,3 +41,26 @@ aside(id="left-content" data-toggle="open" data-default="open" data-size="")
                 i(class="material-icons") 
                   | exit_to_app
                 span(data-i18n="userinfo.logout") Log Out
+    
+    nav(id="sidebar")
+      ul
+        li
+          a(href="pages/dashboard.html")
+            span(class="menu-item-ico")
+              i(class="material-icons") dashboard
+            span(class="menu-item-name" data-i18n="nav.dashboard") Dashboard
+            
+        li
+          a(href="#")
+            span(class="menu-item-ico")
+              i(class="material-icons") extension
+            span(class="menu-item-name" data-i18n="nav.components.components") Catálogos
+          ul
+            li
+              a(href="#")
+                span(data-i18n="nav.components.accordions") Clientes
+            li
+              a(href="#")
+                span(data-i18n="nav.components.alerts") Clasificaciones de equipo
+
+include top-bar.jade
