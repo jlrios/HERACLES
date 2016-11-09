@@ -10,7 +10,7 @@ module.exports = function(app, passport){
   });
 
   app.get('/dashboard', function(req, res){
-    res.render('includes/dashboard/dashboard');
+    res.render('dashboard/dashboard');
   });
 
   app.post('/login', passport.authenticate('local-login', {

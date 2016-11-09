@@ -1,0 +1,42 @@
+aside(id="left-content" data-toggle="open" data-default="open" data-size="")
+  header(class="header-container")
+    div(class="header-wrapper")
+      div(id="header-brand")
+        div(class="logo padding-left-2")
+          span(class="logo-image") H
+          span(class="logo-text") Heracles
+  div(id="sidebar-wrapper")
+    div(id="userbox")
+      div(id="useravatar")
+        div(class="avatar-thumbnail")
+          img(src="../../public/images/avatar/avatar_square_blue.png" class="img-circle")
+
+      div(id="userinfo")
+        div(class="btn-group")
+          button(type="button" class="btn btn-default-bright btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") 
+            |John Doe
+            i(class="material-icons") arrow_drop_down
+    
+          ul(class="dropdown-menu")
+            li
+              a(href="#")
+                i(class="material-icons") 
+                  | person
+                span(data-i18n="userinfo.profile") Your Profile
+            li
+              a(href="#")
+                i(class="material-icons")
+                  | settings
+                span(data-i18n="userinfo.settings") Settings
+            li(class="divider-horizontal")
+            li
+              a(href="#")
+                i(class="material-icons")
+                  | lock
+                span(data-i18n="userinfo.lock") Lock
+            li(class="divider-horizontal")
+            li
+              a(href="#")
+                i(class="material-icons") 
+                  | exit_to_app
+                span(data-i18n="userinfo.logout") Log Out
