@@ -23,7 +23,6 @@ module.exports = function(passport){
   },
   function(req, correoElectronico, contrasena, done){
     User.findOne({'local.correoElectronico': correoElectronico}, function(err, user){
-      console.log(err);
       if(err)
         return done(err);
 

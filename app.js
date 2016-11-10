@@ -1,4 +1,3 @@
-// Servidor.
 var express = require('express');
 var app = express();
 
@@ -22,6 +21,7 @@ require('./config/connect')(passport);
 // Setup de la aplicación.
 app.use(logger('dev'));
 app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({
   extended:true
 }));
@@ -41,6 +41,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(flash());
 
 require('./app/routes')(app, passport);

@@ -1,7 +1,7 @@
 {
   "name": "heracles",
   "version": "0.0.1",
-  "description": "Sistema Integral para el Control de Inventario y Eventos.",
+  "description": "Sistema para la Gestión Integral de Inventarios y Eventos.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

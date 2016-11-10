@@ -30,7 +30,7 @@ $.debug = true;
  * Html5Mode = true; will use pushstate instead of hash based navigation
  */
 $.ajaxNavHtml5Mode 			= false;
-$.ajaxNavFadeDuration 		= 400;
+$.ajaxNavFadeDuration 		= 700;
 $.ajaxNavMaterialTransition = false;
 
 
@@ -58,7 +58,7 @@ $.defaultHomePage = false;
  * Idle Timer
  */
 $.idle			= false;
-$.idleTimeout	= 3000;
+$.idleTimeout	= 7000;
 
 
 /**

@@ -10,22 +10,9 @@ section(id="right-content")
         div(id="searchbox")
           span(class="search-icon")
             i(class="material-icons") search
-          input(id="search-input" placeholder="Search" type="text" data-i18n="[placeholder]headerToolbar.searchbox")
+          input(id="search-input" placeholder="Buscar" type="text" data-i18n="[placeholder]headerToolbar.searchbox")
             
         ul(class="toolbar toolbar-right")
-          li(class="dropdown")
-            a(id="language-selector" href="javascript:void(0);" role="button" data-toggle="dropdown" data-container="body" data-placement="bottom" title="Language Selector" data-i18n="[title]headerToolbar.languageSelector")
-              i(class="material-icons") language
-              span(class="caret")
-            ul(id="language-selector-list" class="dropdown-menu")
-              li(class="active")
-                a(href="javascript:void(0);" data-language="en")
-                  span(class="flag flag-us" alt="English") 
-                  | English
-              li
-                a(href="javascript:void(0);" data-language="es")
-                  span(class="flag flag-es" alt="Español")
-                  | Español
           li
             a(href="javascript:void(0);" id="fullscreen-toggle" data-toggle="tooltip" data-placement="bottom" title="Toggle Fullscreen" data-i18n="[title]headerToolbar.fullscreenToggle")
               i(class="material-icons") fullscreen
@@ -34,28 +21,30 @@ section(id="right-content")
               div(class="avatar")
                 img(src="/images/avatar/avatar_square_blue.png" class="img-circle img-responsive")
               div(class="user")
-                span(class="username") John Doe
+                span(class="username") 
+                  | #{user.local.nombre} 
+                  | #{user.local.primerApellido}
               span(class="expand-ico")
                 i(class="material-icons") expand_more
             ul(class="dropdown-menu dropdown-menu-right")
               li
                 a(href="#")
                   i(class="material-icons") person
-                  span(data-i18n="userinfo.profile") Your Profile
+                  span(data-i18n="userinfo.profile") Perfil
               li
                 a(href="#")
                   i(class="material-icons") settings
-                  span(data-i18n="userinfo.settings") Settings
+                  span(data-i18n="userinfo.settings") Configuración
               li(class="divider-horizontal")
               li
                 a(href="#")
                   i(class="material-icons") lock
-                  span(data-i18n="userinfo.lock") Lock
+                  span(data-i18n="userinfo.lock") Bloquear
               li(class="divider-horizontal")
                 li
-                  a(href="#")
+                  a(href="/logout")
                     i(class="material-icons") exit_to_app
-                    span(data-i18n="userinfo.logout") Log Out
+                    span(data-i18n="userinfo.logout") Cerrar sesión
                       
   section(id="right-content-wrapper")
     div(class="right-content-outter")
@@ -63,5 +52,5 @@ section(id="right-content")
     div(id="page-footer" class="padding-1")
       div
         strong Heracles v1.0 
-        | Copyright © 2015-2016 Hércules Producciones S. A. de C. V.
+        | Copyright © 2017 Hércules Producciones S. A. de C. V.
                     
