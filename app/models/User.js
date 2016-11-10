@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
     nombre:String,
     primerApellido:String,
     segundoApellido:String,
-    perfil:Number
+    perfil:Number,
+    activo:Number
   }
 });
 
