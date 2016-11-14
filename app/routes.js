@@ -22,7 +22,7 @@ module.exports = function(app, passport){
   });
 
   // Ruta de prueba.
-  app.get('/#pages/test', function(req, res){
+  app.get('/dashboard/#pages/test', function(req, res){
     res.render('pages/test');
   });
 
