@@ -1,29 +1,29 @@
-div(id="authentication-box" class="authentication-style1")
-  div(class="authentication-box-wrapper")
-    div(class="panel panel-default")
-      div(class="panel-body no-padding")
-        div(class="authentication-header")
-          div(class="logo-box logo-box-primary-light padding-top-4")
-            div(class="logo")
-              b H
-          span Iniciar sesión
-      
-        div(class="authentication-body")
-          form(class="form" role="form" action="/login" method="post")
-            div(class="form-group floating-label")
-              input(type="text" class="form-control" id="regular2" name="correoElectronico")
-              label(for="regular2") Usuario
-          
-            div(class="form-group floating-label")
-              input(type="password" class="form-control" id="password" name="contrasena")
-              label(for="password") Contraseña 
+div
+  a(class="hiddenanchor" id="signup")
+  a(class="hiddenanchor" id="signin")
+
+  div(class="login_wrapper")
+    div(class="animate form login_form")
+      section(class="login_content")
+        form
+          h1 Iniciar sesión
+          div
+            input(type="text" class="form-control" placeholder="Username" required="")
+          div
+            input(type="password" class="form-control" placeholder="Password" required="")
+          div
+            a(class="btn btn-default submit" href="index.html") Aceptar
+            a(class="reset_pass" href="#") Recuperar contraseña
+
+          div(class="clearfix")
+
+          div(class="separator")
+            div(class="clearfix")
             
-            button(type="submit" class="btn btn-info btn-raised btn-block") Aceptar
-    
-            div(class="authentication-body-footer margin-top-5")
-              div
-                label
-                  input(class="checkbox checkbox-primary" type="checkbox")
-                  span Recordarme
-              div(class="text-right")
-                a(href="#") Recuperar contraseña
+            br
+            
+            div
+              h1 
+                //i(class="fa fa-paw")
+                | Sistema Hércules V. 1.0.
+              p © 2017 Copyright Hércules Producciones S. A. de C. V.
