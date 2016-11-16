@@ -20,56 +20,25 @@ body {
   color: #ffffff;
 }
 
-h1, h2 {
+h1 {
   color: #efecec;
   text-transform: uppercase;
+  font-size: 40px;
   line-height: 50px;
-  font-weight: bold;
+  font-weight: 400;
   margin-top: 20px;
 }
 
-h1 {
-  font-size: 42px;
-}
-
-h2 {
-  font-size: 30px;
-}
-
 a {
-  color: #D5F5E3;
+  color: #ffffff;
 }
 
 p {
   margin: 0 0 15px 0;
 }
 
-strong {
-  font-weight: 700;
-}
-
-blockquote {
-  display: block;
-  max-width: 480px;
-  margin: 15px auto;
-  padding: 15px;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: #e1e1e1;
-  font-family: "Kotta One", serif;
-  font-size: 22px;
-  line-height: 28px;
-}
-
-blockquote cite {
-  display: block;
-  font: 18px/23px "Cantarell", sans-serif;
-  font-size: 16px;
-  margin-top: 16px;
-  color: #cccccc;
-  text-transform: uppercase;
-}
-
 /* Layout */
+
 .navbar {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
@@ -88,6 +57,7 @@ blockquote cite {
   display: inline-block;
   font-size: 14px;
   line-height: 24px;
+  border-radius: 3px;
   padding: 2px 15px;
   text-decoration: none;
   margin-top: 5px;
@@ -103,12 +73,6 @@ blockquote cite {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-}
-
-.only-text {
-  color: #CAFAEA;
-  font-size: 16px;
-  font-weight: lighter;
 }
 
 /* Special */
@@ -132,8 +96,12 @@ blockquote cite {
   text-transform: uppercase;
 }
 
-#more-content {
-  display: none;
+.only-text {
+  color: #cafaea;
+  font-size: 16px;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* Media Queries */
@@ -148,35 +116,16 @@ blockquote cite {
     padding: 80px 0 0 0;
   }
 
-  #more-content {
-    float: left;
-    margin-right: 10px;
-
-  }
-
   body h1 {
     font-size: 18px;
     line-height: 23px;
   }
 
-  .content, blockquote {
+  .content {
     display: inline;
     margin: 0 auto;
     padding-top: 80px;
     vertical-align: baseline;
-  }
-
-  blockquote {
-    width: 150px;
-    margin: 15px auto;
-    font-size: 16px;
-    line-height: 21px;
-    background-color: transparent;
-  }
-
-  blockquote cite {
-    font-size: 14px;
-    line-height: 19px;
   }
 
   .sub-title {

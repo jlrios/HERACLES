@@ -21,11 +21,6 @@ module.exports = function(app, passport){
     });
   });
 
-  // Ruta de prueba.
-  app.get('/dashboard/#pages/test', function(req, res){
-    res.render('pages/test');
-  });
-
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
