@@ -13,9 +13,9 @@ module.exports = function(app, passport){
     });
   });
 
-  app.get('/dashboard', function(req, res){
+  app.get('/main', function(req, res){
     console.log(res);
-    res.render('dashboard/dashboard', {
+    res.render('main', {
       title:"Hércules | Dashboard",
       user:req.user
     });
@@ -26,8 +26,9 @@ module.exports = function(app, passport){
     res.redirect('/');
   });
 
+  // login post.
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect:'/dashboard',
+    successRedirect:'/main',
     failureRedirect:'/',
     failureFlash:true
   }));
