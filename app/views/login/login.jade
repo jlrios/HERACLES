@@ -1,12 +1,14 @@
 div(class="modal fade" tabindex="-1" role="dialog" id="loginModal" )
   div(class="modal-dialog modal-sm")
     div(class="modal-content" style="border-top: 7px solid #1abb9c;")
+    
       div(class="modal-header")
         button(type="button" class="close" data-dismiss="modal" aria-label="Cerrar")
           span(aria-hidden='true') &times;
         i(class="fa fa-sign-in fa-3x" aria-hidden="true" style="float: left; padding-right: 10px;")
         h2(class="modal-title") SGRT
         h4(class="modal-title") Sistema para la Gestión de Reportes de Trabajo
+    
       div(class="modal-body")
         form(class="form-horizontal" action="/login" method="post")
           h3 Iniciar sesión
@@ -29,6 +31,7 @@ div(class="modal fade" tabindex="-1" role="dialog" id="loginModal" )
           div(class="form-group")
             div(class="col-sm-12")
               input(type="submit" value="Aceptar" class="btn btn-primary btn-block")
+    
       div(class="modal-footer")
         | ¿No puede iniciar sesión?
         br
@@ -40,7 +43,7 @@ script.
   });
 
   $(document).ready(function() {
-    // Aplicar estílo a los Checkboxes
+    // Aplicar estílo a los Checkboxes.
     var checkBox = document.querySelector('.js-switch');
     var init = new Switchery(checkBox, {size: 'small'});
 

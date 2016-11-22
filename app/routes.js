@@ -16,7 +16,9 @@ module.exports = function(app, passport){
   app.get('/main', function(req, res){
     res.render('main', {
       title:"Hércules | Dashboard",
-      user:req.user
+      user:req.user,
+      view:"dashboard",
+      titleView:"Dashboard"
     });
   });
 
