@@ -1,6 +1,9 @@
 // ./app/routes.js
 
 module.exports = function(app, passport){
+
+  var UserCtrl = require('./controllers/Users.js');
+
   app.get('/', function(req, res){
     res.render('index', {
       title:"Sistema Hércules"
@@ -19,6 +22,25 @@ module.exports = function(app, passport){
       user:req.user,
       view:"dashboard",
       titleView:"Dashboard"
+    });
+  });
+
+  app.get('/main/users', UserCtrl.findAllUsers, function(req, res){
+    res.render('main', {
+      title: "Hercules | Usuarios",
+      user:req.user,
+      users:req.users,
+      view:"users",
+      titleView:"Usuarios"
+    });
+  });
+
+  app.get('/main/profiles', function(req, res){
+    res.render('main', {
+      title: "Hércules | Perfiles",
+      user:req.user,
+      view:"profiles",
+      titleView:"Perfiles"
     });
   });
 

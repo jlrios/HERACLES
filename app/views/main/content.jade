@@ -15,5 +15,11 @@ div(class="right_col" role="main")
 
     if loadView == "dashboard"
       include ../dashboard/dashboard.jade
+      
+    if loadView == "users"
+      include ../users/users.jade
     
+    if loadView == "profiles"
+      include ../profiles/profiles.jade
+      
     div(class="clearfix")
