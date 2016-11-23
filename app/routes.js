@@ -25,16 +25,17 @@ module.exports = function(app, passport){
     });
   });
 
-  app.get('/main/users', UserCtrl.findAllUsers, function(req, res){
+app.get('/main/users', UserCtrl.findAllUsers);
+  /*app.get('/main/users', UserCtrl.findAllUsers, function(req, res){
     res.render('main', {
       title: "Hercules | Usuarios",
       user:req.user,
-      users:req.users,
+      //users:req.users,
       view:"users",
       titleView:"Usuarios"
     });
   });
-
+*/
   app.get('/main/profiles', function(req, res){
     res.render('main', {
       title: "Hércules | Perfiles",
