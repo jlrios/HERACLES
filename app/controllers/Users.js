@@ -10,7 +10,7 @@ exports.findAllUsers = function(req, res){
       res.send(500, err.message);
 
     var usersJSON = JSON.stringify(users);
-
+    
     res.render('main', {
       title: "Hercules | Usuarios",
       user:req.user,
