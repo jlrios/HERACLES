@@ -2,10 +2,12 @@ doctype html
 
 html
   head
+    title=title
+    
     include ../includes/metas.jade
     include ../includes/css.jade
     
-    title=title
+    //include ../includes/js.jade
 
 body(class="nav-md")
   div(class="container body")
@@ -36,3 +38,10 @@ body(class="nav-md")
       include ../main/footer.jade
           
   include ../includes/js.jade
+  
+  script.
+    $(document).ready(function() {
+    // Aplicar estílo a los Checkboxes.
+    var checkBox = document.querySelector('.js-switch');
+    var init = new Switchery(checkBox, {size: 'small'});
+  });

@@ -4,24 +4,12 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 exports.findAllUsers = function(req, res){
-  User.find(function(err, users){
-    if (err)
-      res.send(500, err.message);
-
-    res.render('main', {
-      title: "Hércules | Usuarios",
-      user:req.user,
-      users:users,
-      view:"users",
-      titleView:"Usuarios"
-    });
-  });
+  findUsersAndRender(req, res);
 }
 
 exports.addUser = function(req, res){
   User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
     if (err){
-      alert(err);
       return done(err);}
 
     if (user) {
@@ -41,20 +29,24 @@ exports.addUser = function(req, res){
         if (err)
           throw err;
 
-        User.find(function(err, users){
-          if (err)
-            res.send(500, err.message);
-
-          res.render('main', {
-            title: "Hércules | Usuarios",
-            user:req.user,
-            users:users,
-            view:"users",
-            titleView:"Usuarios"
-          });
-        });
-        //return done(null, newUser);
+        findUsersAndRender(req, res);
       });
     }
+  });
+}
+
+// Encuentra todos los usuarios y renderiza la vista.
+function findUsersAndRender(_req, _res) {
+  User.find(function(err, users){
+    if (err)
+      _res.send(500, err.message);
+
+    _res.render('main', {
+      title: "Hércules | Usuarios",
+      user:_req.user,
+      users:users,
+      view:"users",
+      titleView:"Usuarios"
+    });
   });
 }

@@ -1,5 +1,16 @@
 -var usersJSON = users
 
+script.
+  var head = document.getElementsByTagName('head')[0],
+  
+  link = document.createElement('link');
+
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/stylesheets/switchery/switchery.min.css';
+
+  head.appendChild(link);
+
 div(class="row")
   div(class="col-md-12 col-sm-12 col-xs-12")
     div(class="x_panel")
@@ -47,9 +58,9 @@ div(class="row")
                 -var userIsActive = (usr.local.activo === 1 ? 1 : 0)
                 
                 if userIsActive == 1
-                  input(type="checkbox" class="js-switch" checked)
-                
-                if userIsActive == 0
+                  input(type="checkbox" class="js-switch" checked disabled)
+                else
+                  //if userIsActive == 0
                   input(type="checkbox" class="js-switch")
                 
               td #{usr.local.correoElectronico}
@@ -57,91 +68,9 @@ div(class="row")
                 -var userIsAdmin = (usr.local.perfil === 1 ? 1 : 0)
                 
                 if userIsAdmin == 1
-                  input(type="checkbox" class="js-switch" checked)
-                  
-                if userIsAdmin == 0
+                  input(type="checkbox" class="js-switch")
+                else  
+                  //if userIsAdmin == 0
                   input(type="checkbox" class="js-switch")
                   
               td Acción
-
-
-script.
-  $(document).ready(function() {
-    //$('head').append('<link rel="stylesheet" href="style2.css" type="text/css" />');
-
-    var handleDataTableButtons = function() {
-      if ($("#datatable-buttons").length) {
-        $("#datatable-buttons").DataTable({
-          dom: "Bfrtip",
-          buttons: [
-            {
-              extend: "copy",
-              className: "btn-sm"
-            },
-            {
-              extend: "csv",
-              className: "btn-sm"
-            },
-            {
-              extend: "excel",
-              className: "btn-sm"
-            },
-            {
-              extend: "pdfHtml5",
-              className: "btn-sm"
-            },
-            {
-              extend: "print",
-              className: "btn-sm"
-            },
-          ],
-          responsive: true
-        });
-      }
-    };
-
-    TableManageButtons = function() {
-      "use strict";
-      return {
-        init: function() {
-          handleDataTableButtons();
-        }
-      };
-    }();
-
-    $('#datatable').dataTable();
-
-    $('#datatable-keytable').DataTable({
-      keys: true
-    });
-
-    $('#datatable-responsive').DataTable();
-
-    $('#datatable-scroller').DataTable({
-      ajax: "js/datatables/json/scroller-demo.json",
-      deferRender: true,
-      scrollY: 380,
-      scrollCollapse: true,
-      scroller: true
-    });
-
-    $('#datatable-fixed-header').DataTable({
-      fixedHeader: true
-    });
-
-    var $datatable = $('#datatable-checkbox');
-
-    $datatable.dataTable({
-      'order': [[ 1, 'asc' ]],
-      'columnDefs': [
-        { orderable: false, targets: [0] }
-      ]
-    });
-    $datatable.on('draw.dt', function() {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_flat-green'
-      });
-    });
-
-    TableManageButtons.init();
-  });
