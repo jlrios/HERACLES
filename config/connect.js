@@ -16,14 +16,13 @@ module.exports = function(passport){
   });
 
   // Local signup.
-  passport.use('local-signup', new localStrategy({
+  /*passport.use('local-signup', new localStrategy({
       usernameField:'correoElectronico',
       passwordField:'contrasena',
       passReqToCallback:true
   },
   function(req, correoElectronico, contrasena, done){
     User.findOne({'local.correoElectronico': correoElectronico}, function(err, user){
-      console.log("SI NECESITO TU LUZ...");
       if (err){
         alert(err);
         return done(err);}
@@ -44,7 +43,7 @@ module.exports = function(passport){
         });
       }
     });
-  }));
+  }));*/
 
   // Local login.
   passport.use('local-login', new localStrategy({

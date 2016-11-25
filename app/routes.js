@@ -57,11 +57,7 @@ app.get('/main/profiles', function(req, res){
     failureFlash:true
   }));
 
-  // Signup post.
-  app.post('/main/users/blank', passport.authenticate('local-signup', {
-    successRedirect:'/main/users',
-    failureRedirect:'/main/users',
-    failureFlash:true
-  }));
+  // Post del signup de usuarios.
+  app.post('/main/users/blank', UserCtrl.addUser);
 
 }
