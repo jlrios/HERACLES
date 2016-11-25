@@ -15,6 +15,37 @@ module.exports = function(passport){
     });
   });
 
+  // Local signup.
+  passport.use('local-signup', new localStrategy({
+      usernameField:'correoElectronico',
+      passwordField:'contrasena',
+      passReqToCallback:true
+  },
+  function(req, correoElectronico, contrasena, done){
+    User.findOne({'local.correoElectronico': correoElectronico}, function(err, user){
+      console.log("SI NECESITO TU LUZ...");
+      if (err){
+        alert(err);
+        return done(err);}
+
+      if (user) {
+        return done(null, false, req.flash('signupMessage', 'El correo electrónico ya se encuentra registrado.'));
+      } else {
+        var newUser = new User();
+
+        newUser.local.correoElectronico = correoElectronico;
+        newUser.local.contrasena = newUser.generateHash(contrasena);
+
+        newUser.save(function(err) {
+          if (err)
+            throw err;
+
+          return done(null, newUser);
+        });
+      }
+    });
+  }));
+
   // Local login.
   passport.use('local-login', new localStrategy({
     usernameField:'correoElectronico',
@@ -35,4 +66,5 @@ module.exports = function(passport){
       return done(null, user);
     });
   }));
+
 };
