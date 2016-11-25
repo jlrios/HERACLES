@@ -9,12 +9,12 @@ exports.findAllUsers = function(req, res){
     if (err)
       res.send(500, err.message);
 
-    var usersJSON = JSON.stringify(users[0].local);
-
+    var usersJSON = users;
+    console.log(usersJSON);
     res.render('main', {
       title: "Hercules | Usuarios",
       user:req.user,
-      users:usersJSON,
+      users:users,
       view:"users",
       titleView:"Usuarios"
     });

@@ -1,4 +1,4 @@
--var usrsJSON = JSON.parse(users)
+-var usersJSON = users
 
 div(class="row")
   div(class="col-md-12 col-sm-12 col-xs-12")
@@ -27,7 +27,7 @@ div(class="row")
       div(class="x_content")
         p(class="text-muted font-13 m-b-30")
           | DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-        table(id="datatable" class="table table-striped table-bordered")
+        table(id="datatable-butons" class="table table-striped table-bordered")
           thead
             tr
               th Nombre
@@ -38,12 +38,13 @@ div(class="row")
               th Administrador
               th Acciones
           tbody
+          -each usr in usersJSON
             tr
-              td #{usrsJSON.nombre}
-              td #{usrsJSON.primerApellido}
-              td #{usrsJSON.segundoApellido}
+              td #{usr.local.nombre}
+              td #{usr.local.primerApellido}
+              td #{usr.local.segundoApellido}
               td 
-                -var userIsActive = (usrsJSON.activo === 1 ? 1 : 0)
+                -var userIsActive = (usr.local.activo === 1 ? 1 : 0)
                 
                 if userIsActive == 1
                   input(type="checkbox" class="js-switch" checked)
@@ -51,6 +52,16 @@ div(class="row")
                 if userIsActive == 0
                   input(type="checkbox" class="js-switch")
                 
-              td #{usrsJSON.correoElectronico}
-              td Administrador
+              td #{usr.local.correoElectronico}
+              td 
+                -var userIsAdmin = (usr.local.perfil === 1 ? 1 : 0)
+                
+                if userIsAdmin == 1
+                  input(type="checkbox" class="js-switch" checked)
+                  
+                if userIsAdmin == 0
+                  input(type="checkbox" class="js-switch")
+                  
               td Acción
+
+          
