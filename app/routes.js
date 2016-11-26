@@ -4,6 +4,9 @@ module.exports = function(app, passport){
 
   var UserCtrl = require('./controllers/Users.js');
 
+  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  // Puro get's.
+  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   app.get('/', function(req, res){
     res.render('index', {
       title:"Sistema Hércules"
@@ -50,6 +53,9 @@ app.get('/main/profiles', function(req, res){
     res.redirect('/');
   });
 
+  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  // Puro post's
+  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // Login post.
   app.post('/login', passport.authenticate('local-login', {
     successRedirect:'/main',

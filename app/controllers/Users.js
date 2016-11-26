@@ -3,10 +3,13 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
+// Lista completa de usuarios, llama a otra función.
 exports.findAllUsers = function(req, res){
   findUsersAndRender(req, res);
 }
 
+// Agregrar un nuevo usuario, también llama a la función para listar usuarios, después
+// de que se haya agregado.
 exports.addUser = function(req, res){
   User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
     if (err){

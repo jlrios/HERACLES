@@ -1,16 +1,5 @@
 -var usersJSON = users
 
-script.
-  var head = document.getElementsByTagName('head')[0],
-  
-  link = document.createElement('link');
-
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = '/stylesheets/switchery/switchery.min.css';
-
-  head.appendChild(link);
-
 div(class="row")
   div(class="col-md-12 col-sm-12 col-xs-12")
     div(class="x_panel")
@@ -21,23 +10,15 @@ div(class="row")
           li
             a(class="collapse-link")
               i(class="fa fa-chevron-up")
-          li(class="dropdown")
-            a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false")
-              i(class="fa fa-print")
-            ul(class="dropdown-menu" role="menu")
-              li
-                a(href="#") PDF
-              li
-                a(href="#") Excell
-          li
-            a(class="close-link")
-              i(class="fa fa-close")
-        
+              
         div(class="clearfix")
         
       div(class="x_content")
-        p(class="text-muted font-13 m-b-30")
-          | DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+      
+        a(href="/main/users/blank" class="btn btn-primary")
+          i(class="fa fa-user")
+          |  Agregar usuario
+        
         table(id="datatable-butons" class="table table-striped table-bordered")
           thead
             tr
@@ -54,23 +35,35 @@ div(class="row")
               td #{usr.local.nombre}
               td #{usr.local.primerApellido}
               td #{usr.local.segundoApellido}
-              td 
+              td(style="text-align: center;") 
                 -var userIsActive = (usr.local.activo === 1 ? 1 : 0)
                 
                 if userIsActive == 1
                   input(type="checkbox" class="js-switch" checked disabled)
                 else
-                  //if userIsActive == 0
-                  input(type="checkbox" class="js-switch")
+                  input(type="checkbox" class="js-switch" disabled)
                 
               td #{usr.local.correoElectronico}
-              td 
+              td(style="text-align: center;")
                 -var userIsAdmin = (usr.local.perfil === 1 ? 1 : 0)
                 
                 if userIsAdmin == 1
-                  input(type="checkbox" class="js-switch")
-                else  
-                  //if userIsAdmin == 0
-                  input(type="checkbox" class="js-switch")
+                  input(type="checkbox" class="js-switch" checked disabled)
+                else
+                  input(type="checkbox" class="js-switch" disabled)
                   
-              td Acción
+              td(align="center")
+                div(class="btn-group")
+                  button(type="button" class="btn btn-default") Acción
+                  button(type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false")
+                    span(class="caret")
+                    span(class="sr-only") Toggle Dropdown
+                  ul(class="dropdown-menu" role="menu")
+                    li
+                      a(href="#") Eliminar
+                    li
+                      a(href="#") Editar
+                    li(class="divider")
+                    li
+                      a(href="#") Asignar perfil
+          

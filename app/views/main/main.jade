@@ -40,8 +40,9 @@ body(class="nav-md")
   include ../includes/js.jade
   
   script.
-    $(document).ready(function() {
+    // Switchery.
     // Aplicar estílo a los Checkboxes.
-    var checkBox = document.querySelector('.js-switch');
-    var init = new Switchery(checkBox, {size: 'small'});
-  });
+    //$(document).ready(function(){
+      var checkBox = document.querySelector('.js-switch');
+      var init = new Switchery(checkBox, {size: 'small'});
+    //});
