@@ -1,5 +1,21 @@
 -var usersJSON = users
 
+// Algunos estílos y Java scripts se insertan dinámicamente, con el fin de no cargarlos en main.jade.
+// Se cargan según sean necesarios.
+script.
+  var head = document.getElementsByTagName('head')[0];
+  var links = ['/stylesheets/tables/datatables.net-bs/dataTables.bootstrap.min.css', '/stylesheets/tables/datatables.net-buttons-bs/buttons.bootstrap.min.css', '/stylesheets/tables/datatables.net-fixedheader-bs/fixedHeader.bootstrap.min.css', '/stylesheets/tables/datatables.net-responsive-bs/responsive.bootstrap.min.css', '/stylesheets/tables/datatables.net-scroller-bs/scroller.bootstrap.min.css'];
+  
+  for(url = 0; url < links.length - 1; url++){
+    link = document.createElement('link');  
+
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = links[url];
+
+    head.appendChild(link);
+  }
+
 div(class="row")
   div(class="col-md-12 col-sm-12 col-xs-12")
     div(class="x_panel")
@@ -10,16 +26,24 @@ div(class="row")
           li
             a(class="collapse-link")
               i(class="fa fa-chevron-up")
+          li(class="dropdown")
+            a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false")
+              i(class="fa fa-print")
+            ul(class="dropdown-menu" role="menu")
+              li
+                a(href="#") PDF
+              li
+                a(href="#") XLS
               
         div(class="clearfix")
         
       div(class="x_content")
       
-        a(href="/main/users/blank" class="btn btn-primary")
+        a(href="/main/users/blank" class="btn btn-info")
           i(class="fa fa-user")
-          |  Agregar usuario
+          |  Agregar
         
-        table(id="datatable-butons" class="table table-striped table-bordered")
+        table(id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%")
           thead
             tr
               th Nombre
@@ -54,15 +78,15 @@ div(class="row")
                   
               td(align="center")
                 div(class="btn-group")
-                  button(type="button" class="btn btn-default") Acción
-                  button(type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false")
+                  button(type="button" class="btn btn-info") Acción
+                  button(type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false")
                     span(class="caret")
                     span(class="sr-only") Toggle Dropdown
                   ul(class="dropdown-menu" role="menu")
                     li
                       a(href="#") Eliminar
                     li
-                      a(href="#") Editar
+                      a(href="/main/users/edit") Editar
                     li(class="divider")
                     li
                       a(href="#") Asignar perfil

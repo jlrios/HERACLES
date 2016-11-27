@@ -3,6 +3,7 @@
 module.exports = function(app, passport){
 
   var UserCtrl = require('./controllers/Users.js');
+  var User = require('./models/User');
 
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // Puro get's.
@@ -39,6 +40,25 @@ app.get('/main/users/blank', function(req, res){
   });
 });
 
+app.get('/main/users/edit', function(req, res){
+  console.log("ENTRO...");
+  console.log(req);
+  User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
+    if (err){
+      return done(err);
+    }
+
+    if (user) {
+      res.render('main', {
+        title: "Hércules | Editar usuario",
+        user: req.user,
+        view: "edit-user",
+        titleView: "Editar usuario"
+      });
+    }
+  });
+});
+
 app.get('/main/profiles', function(req, res){
     res.render('main', {
       title: "Hércules | Perfiles",
@@ -63,7 +83,8 @@ app.get('/main/profiles', function(req, res){
     failureFlash:true
   }));
 
-  // Post del signup de usuarios.
+  // Post's de usuarios.
   app.post('/main/users/blank', UserCtrl.addUser);
+  app.post('/main/users/edit', UserCtrl.editUser);
 
 }

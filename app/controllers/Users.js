@@ -38,6 +38,19 @@ exports.addUser = function(req, res){
   });
 }
 
+// Editar usuario.
+exports.editUser = function(req, res){
+  User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
+    if (err){
+      return done(err);
+    }
+
+    if (user) {
+
+    } 
+  });
+}
+
 // Encuentra todos los usuarios y renderiza la vista.
 function findUsersAndRender(_req, _res) {
   User.find(function(err, users){
@@ -52,4 +65,9 @@ function findUsersAndRender(_req, _res) {
       titleView:"Usuarios"
     });
   });
+}
+
+// Guarda usuario.
+function saveUser(){
+
 }
