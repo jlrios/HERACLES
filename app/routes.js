@@ -40,10 +40,11 @@ app.get('/main/users/blank', function(req, res){
   });
 });
 
-app.get('/main/users/edit', function(req, res){
+app.get('/main/users/edit/:id', function(req, res){
   console.log("ENTRO...");
-  console.log(req);
-  User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
+  var id = req.params.id;
+  console.log(id);
+  User.findById({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
     if (err){
       return done(err);
     }
