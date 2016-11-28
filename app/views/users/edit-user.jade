@@ -24,39 +24,44 @@ div(class="row")
         
       div(class="x_content")
         br
-        form(id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="/main/users/blank" method="post")
+        form(id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="/main/users/update/#{userId._id}" method="post")
           div(class="form-group")
             label(class="control-label col-md-3 col-sm-3 col-xs-12" for="nombreCompleto") 
               | Nombre completo: 
               span(class="required") *
             div(class="col-md-6 col-sm-6 col-xs-12")
-              input(type="text" id="nombreCompleto" name="nombreCompleto" required="required" class="form-control col-md-7 col-xs-12" value="#{user.local.nombre}")
+              input(type="text" id="nombreCompleto" name="nombreCompleto" required="required" class="form-control col-md-7 col-xs-12" value="#{userId.local.nombre}")
           div(class="form-group")
             label(class="control-label col-md-3 col-sm-3 col-xs-12" for="primerApellido") 
               | Primer apellido: 
               span(class="required") *
             div(class="col-md-6 col-sm-6 col-xs-12")
-              input(type="text" id="primerApellido" name="primerApellido" required="required" class="form-control col-md-7 col-xs-12" value="#{user.local.primerApellido}")
+              input(type="text" id="primerApellido" name="primerApellido" required="required" class="form-control col-md-7 col-xs-12" value="#{userId.local.primerApellido}")
           div(class="form-group")
             label(for="segundoApellido" class="control-label col-md-3 col-sm-3 col-xs-12") 
               | Segundo apellido: 
             div(class="col-md-6 col-sm-6 col-xs-12")
-              input(id="segundoApellido" class="form-control col-md-7 col-xs-12" type="text" name="segundoApellido" value="#{user.local.segundoApellido}")
+              input(id="segundoApellido" class="form-control col-md-7 col-xs-12" type="text" name="segundoApellido" value="#{userId.local.segundoApellido}")
           div(class="form-group")
             label(for="correoElectronico" class="control-label col-md-3 col-sm-3 col-xs-12") 
               | Correo electrónico:
             div(class="col-md-6 col-sm-6 col-xs-12")
-              input(id="correoElectronico" class="form-control col-md-7 col-xs-12" type="text" name="correoElectronico")          
+              input(id="correoElectronico" class="form-control col-md-7 col-xs-12" type="text" name="correoElectronico" value="#{userId.local.correoElectronico}")          
           div(class="form-group")
             label(for="correoElectronico" class="control-label col-md-3 col-sm-3 col-xs-12") 
               | Contrasena:
             div(class="col-md-6 col-sm-6 col-xs-12")
-              input(id="contrasena" class="form-control col-md-7 col-xs-12" type="password" name="contrasena")          
+              input(id="contrasena" class="form-control col-md-7 col-xs-12" type="password" name="contrasena"  value="#{userId.local.contrasena}" disabled)          
           div(class="form-group")
-            label(for="activo" class="control-label col-md-3 col-sm-3 col-xs-12")
-              | Usuario activo:
+            label(for="activo" class="control-label col-md-3 col-sm-3 col-xs-12")      
+              | Usuario activo
             div(class="col-md-6 col-sm-6 col-xs-12")
-              input(type="checkbox" class="js-switch")          
+              -var userIdIsActive = userId.local.activo
+            
+              if userIdIsActive == 1
+                input(type="checkbox" class="js-switch" checked)
+              else
+                input(type="checkbox" class="js-switch")          
           div(class="ln_solid")
 
           div(class="form-group")

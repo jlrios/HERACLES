@@ -8,8 +8,8 @@ exports.findAllUsers = function(req, res){
   findUsersAndRender(req, res);
 }
 
-// Agregrar un nuevo usuario, también llama a la función para listar usuarios, después
-// de que se haya agregado.
+// Agregrar un nuevo usuario, también llama a la función para listar a los usuarios, después
+// de que el usuario haya sido agregado.
 exports.addUser = function(req, res){
   User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
     if (err){
@@ -38,16 +38,38 @@ exports.addUser = function(req, res){
   });
 }
 
-// Editar usuario.
-exports.editUser = function(req, res){
-  User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
+// Editar usuario, también llama a la función para listar a los usuarios, después de
+// actualizar el registro.
+exports.updateUser = function(req, res){
+
+  User.findById(req.params.id, function(err, userUpdate){
     if (err){
       return done(err);
     }
 
-    if (user) {
+    userUpdate.local.correoElectronico = req.body.correoElectronico;
+    userUpdate.local.contrasena = req.body.contrasena;
+    userUpdate.local.primerApellido = req.body.primerApellido;
+    userUpdate.local.segundoApellido = req.body.segundoApellido;
+    userUpdate.local.nombre = req.body.nombreCompleto;
 
-    } 
+    userUpdate.save(function(err){
+      if (err)
+        throw err;
+
+      findUsersAndRender(req, res);
+    });
+  });
+}
+
+exports.deleteUser = function(req, res){
+  User.findById(req.params.id, function(err, userDelete){
+    userDelete.remove(function(err){
+      if (err)
+        throw err;
+
+      findUsersAndRender(req, res);
+    });
   });
 }
 
@@ -65,9 +87,4 @@ function findUsersAndRender(_req, _res) {
       titleView:"Usuarios"
     });
   });
-}
-
-// Guarda usuario.
-function saveUser(){
-
 }

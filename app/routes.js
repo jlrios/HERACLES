@@ -41,18 +41,19 @@ app.get('/main/users/blank', function(req, res){
 });
 
 app.get('/main/users/edit/:id', function(req, res){
-  console.log("ENTRO...");
+
   var id = req.params.id;
-  console.log(id);
-  User.findById({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
+
+  User.findById(id, function(err, userId){
     if (err){
       return done(err);
     }
 
-    if (user) {
+    if (userId) {
       res.render('main', {
         title: "Hércules | Editar usuario",
         user: req.user,
+        userId: userId,
         view: "edit-user",
         titleView: "Editar usuario"
       });
@@ -75,7 +76,7 @@ app.get('/main/profiles', function(req, res){
   });
 
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  // Puro post's
+  // Puro post's y put's.
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // Login post.
   app.post('/login', passport.authenticate('local-login', {
@@ -86,6 +87,7 @@ app.get('/main/profiles', function(req, res){
 
   // Post's de usuarios.
   app.post('/main/users/blank', UserCtrl.addUser);
-  app.post('/main/users/edit', UserCtrl.editUser);
+  app.post('/main/users/update/:id', UserCtrl.updateUser);
+  app.get('/main/users/delete/:id', UserCtrl.deleteUser);
 
 }
