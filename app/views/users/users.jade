@@ -84,18 +84,16 @@ div(class="row")
                     span(class="sr-only") Toggle Dropdown
                   ul(class="dropdown-menu" role="menu")
                     li
-                      a(href="#" data-toggle="modal" data-target=".delete-user-modal") Eliminar
-                      script.
-                        function deleteUserURL(){
-                          location.href = "/main/users/delete/#{usr._id}"
-                        }
+                      //script.
+                      //  function deleteUserURL(){
+                      //    window.location = "/main/users/delete/#{usr._id}";
+                      //  }
+                      a(href="/main/users/delete/#{usr._id}") Eliminar  
                     li
                       a(href="/main/users/edit/#{usr._id}") Editar
                     li(class="divider")
                     li
                       a(href="#") Asignar perfil
-          
-                      //button type="button" class="btn btn-primary" data-toggle="modal" data-target=".delete-user-modal">Small modal
 
         div(class="modal fade delete-user-modal" tabindex="-1" role="dialog" aria-hidden="true")
           div(class="modal-dialog modal-sm")
