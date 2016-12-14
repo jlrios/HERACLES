@@ -5,9 +5,6 @@ module.exports = function(app, passport){
   var UserCtrl = require('./controllers/Users.js');
   var User = require('./models/User');
 
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  // Puro get's.
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   app.get('/', function(req, res){
     res.render('index', {
       title:"Sistema Hércules"
@@ -29,39 +26,7 @@ module.exports = function(app, passport){
     });
   });
 
-app.get('/main/users', UserCtrl.findAllUsers);
-
-app.get('/main/users/blank', function(req, res){
-  res.render('main', {
-    title: "Hércules | Agregar usuario",
-    user:req.user,
-    view:"blankUser",
-    titleView:"Agregar usuario"
-  });
-});
-
-app.get('/main/users/edit/:id', function(req, res){
-
-  var id = req.params.id;
-
-  User.findById(id, function(err, userId){
-    if (err){
-      return done(err);
-    }
-
-    if (userId) {
-      res.render('main', {
-        title: "Hércules | Editar usuario",
-        user: req.user,
-        userId: userId,
-        view: "edit-user",
-        titleView: "Editar usuario"
-      });
-    }
-  });
-});
-
-app.get('/main/profiles', function(req, res){
+  app.get('/main/profiles', function(req, res){
     res.render('main', {
       title: "Hércules | Perfiles",
       user:req.user,
@@ -75,9 +40,6 @@ app.get('/main/profiles', function(req, res){
     res.redirect('/');
   });
 
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  // Puro post's y put's.
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // Login post.
   app.post('/login', passport.authenticate('local-login', {
     successRedirect:'/main',
@@ -85,9 +47,10 @@ app.get('/main/profiles', function(req, res){
     failureFlash:true
   }));
 
-  // Post's de usuarios.
-  app.post('/main/users/blank', UserCtrl.addUser);
-  app.post('/main/users/update/:id', UserCtrl.updateUser);
+  app.get('/main/users', UserCtrl.findAllUsers);
+  app.get('/main/users/blank', UserCtrl.blankUser);
   app.get('/main/users/delete/:id', UserCtrl.deleteUser);
-
+  app.get('/main/users/edit/:id', UserCtrl.editUser);
+  app.post('/main/users/update/:id', UserCtrl.updateUser);
+  app.post('/main/users/add', UserCtrl.addUser);
 }

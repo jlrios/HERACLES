@@ -4,11 +4,21 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 // Lista completa de usuarios, llama a otra función.
-exports.findAllUsers = function(req, res){
+exports.findAllUsers = function(req, res) {
   findUsersAndRender(req, res);
 }
 
-// Agregrar un nuevo usuario, también llama a la función para listar a los usuarios, después
+// Agregar usuario, vista.
+exports.blankUser = function(req, res) {
+  res.render('main', {
+    title: "Hércules | Agregar usuario",
+    user:req.user,
+    view:"blankUser",
+    titleView:"Agregar usuario"
+  });  
+}
+
+// Agregar un nuevo usuario, también llama a la función para listar a los usuarios, después
 // de que el usuario haya sido agregado.
 exports.addUser = function(req, res){
   User.findOne({'local.correoElectronico': req.body.correoElectronico}, function(err, user){
@@ -62,7 +72,7 @@ exports.updateUser = function(req, res){
   });
 }
 
-exports.deleteUser = function(req, res){
+exports.deleteUser = function(req, res) {
   User.findById(req.params.id, function(err, userDelete){
     userDelete.remove(function(err){
       if (err)
@@ -73,7 +83,27 @@ exports.deleteUser = function(req, res){
   });
 }
 
-// Encuentra todos los usuarios y renderiza la vista.
+exports.editUser = function(req, res) {
+  var id = req.params.id;
+
+  User.findById(id, function(err, userId){
+    if (err){
+      return done(err);
+    }
+
+    if (userId) {
+      res.render('main', {
+        title: "Hércules | Editar usuario",
+        user: req.user,
+        userId: userId,
+        view: "edit-user",
+        titleView: "Editar usuario"
+      });
+    }
+  });
+}
+
+// Lista de todos los usuarios y renderiza la vista.
 function findUsersAndRender(_req, _res) {
   User.find(function(err, users){
     if (err)
